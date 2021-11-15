@@ -15,19 +15,23 @@ int getNumber()
   return iNumber;
 }
 
-//Программа далека от идельной, многие вещи здесь можно переделать
-//НО функциональность, которая от нее требуется она выполняет
+//Эта программа мне максимально не нравится, возможно в будущем я к ней вернусь и улучшу ее
+
 int main()
 {
-  std::cout << "Enter a latitude in degrees, minutes, and seconds: " << std::endl;
-  std::cout << "First, enter the degrees: ";
-  int degrees = getNumber();
-  std::cout << "Next, enter the minutes of arc: ";
-  int minutes = getNumber();
-  std::cout << "Finally, enter the seconds of arc: ";
+  int hoursMinutesSecondsInDay = 86400;
+  int coefMinutes = 60;
+  int hoursCoef = 3600;
+
+  std::cout << "Enter the number of seconds: ";
   int seconds = getNumber();
-  float coef = 60.0;
-  float latitudeInDeegres = degrees + ((minutes + (seconds / coef)) / coef);
-  std::cout << degrees << " degrees, " << minutes << " minutes, " << seconds << " seconds = " << latitudeInDeegres << " degrees";
+  int startSeconds = seconds;
+  int days = seconds / hoursMinutesSecondsInDay;
+  seconds = seconds - days * hoursMinutesSecondsInDay;
+  int hours = seconds / hoursCoef;
+  seconds = seconds - hours * hoursCoef;
+  int minutes = seconds / coefMinutes;
+  seconds = seconds - minutes * coefMinutes;
+  std::cout << startSeconds << " seconds = " << days << " days, " << hours << " hours, " << minutes << " minutes, " << seconds << " seconds";
   return 0;
 }   
