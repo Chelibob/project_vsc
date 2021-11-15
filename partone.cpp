@@ -12,3 +12,32 @@ float tripCalculator(float distance, float consumption, float pricePerLitre)
 {
     return 2*(pricePerLitre * ((consumption/100)*distance));
 }
+
+double getDiscountPrice(double price)
+{
+    if (price > 500 && price < 1000)
+    {
+        std::cout << "Вам предоставляется скидка в 3%";
+        std::cout << "Сумма с учетом скидки: " << price * 0.97 << " руб.";
+    }
+    else if (price > 1000)
+    {
+        std::cout << "Вам предоставляется скидка в 5%";
+        std::cout << "Сумма с учетом скидки: " << price * 0.95 << " руб.";
+    }
+    else
+    {
+        std::cout << "Скидка предоставляется на сумму покупки больше 500 рублей";
+        std::cout << "Итоговая сумма " << price << " руб.";
+    }
+    
+    
+}
+
+double getPrice()
+{
+    std::cout << "Введите сумму покупки: ";
+    double price;
+    std::cin >> price;
+    return price;
+}
