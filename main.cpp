@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include "stdio.h"
 #include <iomanip>
 #include <windows.h>
 #include <cmath>
@@ -8,30 +7,30 @@
 #include <cstdint>
 
 
-int getNumber()
+
+//Очень долго парился над этой программой, но в итоге понял, что немного затупил по черному
+//Задача простая, но затуп забрал много времени
+long long getNumber()
 {
-  int iNumber;
-  std::cin >> iNumber;
-  return iNumber;
+    long long iNumber;
+    std::cin >> iNumber;
+    return iNumber;
 }
 
-//Эта программа мне максимально не нравится, возможно в будущем я к ней вернусь и улучшу ее
+
+double getPercent(long long worldPopulation, long long countryPopulation)
+{
+    return ((double)countryPopulation / (double)worldPopulation) * 100.0;
+}
 
 int main()
 {
-  int hoursMinutesSecondsInDay = 86400;
-  int coefMinutes = 60;
-  int hoursCoef = 3600;
+    std::cout << "Enter the world's population: ";
+    long long worldPopulation = getNumber();
+    std::cout << "Enter the population of the US: ";
+    long long countryPopulation = getNumber();
+    double percent = getPercent(worldPopulation, countryPopulation);
+    std::cout << "The population of the US is " << percent <<  "% of the world population";
 
-  std::cout << "Enter the number of seconds: ";
-  int seconds = getNumber();
-  int startSeconds = seconds;
-  int days = seconds / hoursMinutesSecondsInDay;
-  seconds = seconds - days * hoursMinutesSecondsInDay;
-  int hours = seconds / hoursCoef;
-  seconds = seconds - hours * hoursCoef;
-  int minutes = seconds / coefMinutes;
-  seconds = seconds - minutes * coefMinutes;
-  std::cout << startSeconds << " seconds = " << days << " days, " << hours << " hours, " << minutes << " minutes, " << seconds << " seconds";
-  return 0;
-}   
+    return 0;
+}
